@@ -33,7 +33,7 @@
  *
  *  Author: Anatoly Baskeheev, Itseez Ltd, (myname.mysurname@mycompany.com)
  */
-
+#include <stdio.h>
 #include <pcl/gpu/containers/device_memory.h>
 #include <pcl/gpu/utils/safe_call.hpp>
 

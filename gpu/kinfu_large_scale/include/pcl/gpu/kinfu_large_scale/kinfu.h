@@ -59,7 +59,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <opencv2/contrib/contrib.hpp>
+//#include <opencv2/contrib/contrib.hpp>
 
 namespace pcl
 {
@@ -254,8 +254,8 @@ namespace pcl
 
 	public:
 		bool IsValidPoint( int i ) {
-			if ( _isnan( points_[ i ].p_[ 0 ] ) || _isnan( points_[ i ].p_[ 1 ] ) || _isnan( points_[ i ].p_[ 2 ] ) || 
-				_isnan( points_[ i ].n_[ 0 ] ) || _isnan( points_[ i ].n_[ 1 ] ) || _isnan( points_[ i ].n_[ 2 ] ) )
+			if ( std::isnan( points_[ i ].p_[ 0 ] ) || std::isnan( points_[ i ].p_[ 1 ] ) || std::isnan( points_[ i ].p_[ 2 ] ) || 
+				std::isnan( points_[ i ].n_[ 0 ] ) || std::isnan( points_[ i ].n_[ 1 ] ) || std::isnan( points_[ i ].n_[ 2 ] ) )
 				return false;
 			else
 				return true;

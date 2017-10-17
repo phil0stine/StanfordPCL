@@ -46,7 +46,6 @@
 
 namespace openni_wrapper
 {
-
   /**
    * @brief Image class containing just a reference to image meta data. Thus this class
    * just provides an interface to fill a RGB or Grayscale image buffer.

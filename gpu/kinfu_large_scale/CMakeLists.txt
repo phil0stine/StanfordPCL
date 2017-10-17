@@ -20,6 +20,7 @@ PCL_SET_SUBSYS_INCLUDE_DIR(${SUBSYS_NAME} ${SUBSYS_PATH})
 mark_as_advanced("BUILD_${SUBSYS_NAME}")
 
 if (build)
+  message("GOING TO BUILD KINFU LARGESCALE")
 	FILE(GLOB incs include/pcl/gpu/kinfu_large_scale/*.h*)
 	FILE(GLOB impl_incs include/pcl/gpu/kinfu_large_scale/impl/*.h*)
 	FILE(GLOB srcs src/*.cpp src/*.h*)
@@ -64,7 +65,7 @@ if (build)
 	endif()
 	 
 	PCL_ADD_LIBRARY(${LIB_NAME} ${SUBSYS_NAME} ${srcs} ${incs} ${impl_incs} ${cuda} ${cuda_objs})
-	target_link_libraries(${LIB_NAME} pcl_common pcl_io pcl_gpu_utils pcl_gpu_containers pcl_gpu_octree pcl_octree pcl_filters)
+	target_link_libraries(${LIB_NAME} pcl_common pcl_io pcl_gpu_utils pcl_gpu_containers pcl_gpu_octree pcl_octree pcl_filters ${SUITESPARSE_LIBRARIES} ${OpenCV_LIBS})
 			
 	set(EXT_DEPS "")
 	#set(EXT_DEPS CUDA)

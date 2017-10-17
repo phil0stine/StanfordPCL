@@ -14,6 +14,8 @@ if(OPENNI_FOUND)
 	include_directories(${VTK_INCLUDE_DIRS})
 
 
+message("OPENCV LIBRARIES ${OpenCV_LIBRARIES}   ${OpenCV_LIBS}")
+message("Suitesparse libraries ${SUITESPARSE_LIBRARIES}")
   ## STANDALONE TEXTURE MAPPING
 	set(the_target pcl_kinfu_largeScale_texture_output)
 	set(srcs standalone_texture_mapping.cpp )
@@ -22,7 +24,7 @@ if(OPENNI_FOUND)
 
 #	PCL_ADD_EXECUTABLE(${the_target} ${SUBSYS_NAME} ${srcs} ${hdrs})
 	PCL_ADD_EXECUTABLE_OPT_BUNDLE(${the_target} ${SUBSYS_NAME} ${srcs} ${hdrs})
-	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} pcl_visualization pcl_gpu_kinfu_large_scale pcl_kdtree pcl_features pcl_surface)
+	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} ${SUITESPARSE_LIBRARIES} ${OpenCV_LIBS} pcl_visualization pcl_gpu_kinfu_large_scale pcl_kdtree pcl_features pcl_surface)
 
 	## KINECT FUSION
 	set(the_target pcl_kinfu_largeScale)
@@ -32,15 +34,15 @@ if(OPENNI_FOUND)
 
 #	PCL_ADD_EXECUTABLE(${the_target} ${SUBSYS_NAME} ${srcs} ${hdrs})
 	PCL_ADD_EXECUTABLE_OPT_BUNDLE(${the_target} ${SUBSYS_NAME} ${srcs} ${hdrs})
-	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} pcl_visualization pcl_gpu_kinfu_large_scale pcl_octree)  
-  
+	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} ${SUITESPARSE_LIBRARIES} ${OpenCV_LIBS} pcl_visualization pcl_gpu_kinfu_large_scale pcl_octree)  
+
   ## STANDALONE MARCHING CUBES
 	set(the_target pcl_kinfu_largeScale_mesh_output)
 	set(srcs process_kinfu_large_scale_output.cpp)
 
 	PCL_ADD_EXECUTABLE(${the_target} ${SUBSYS_NAME} ${srcs} ${hdrs})
-	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} pcl_visualization pcl_gpu_kinfu_large_scale pcl_filters)
-        
+	target_link_libraries(${the_target} pcl_common pcl_io ${OPENNI_LIBRARIES} ${SUITESPARSE_LIBRARIES} ${OpenCV_LIBS} pcl_visualization pcl_gpu_kinfu_large_scale pcl_filters)
+
 	## WORLD MODEL TEST
 	#set(the_target world_model_test)
 	#set(srcs world_model_test.cpp)

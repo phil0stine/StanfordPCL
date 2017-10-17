@@ -40,6 +40,7 @@
 
 #include <pcl/cuda/point_cloud.h>
 #include <pcl/io/openni_camera/openni_image.h>
+#include <pcl/io/boost.h>
 
 namespace pcl
 {
